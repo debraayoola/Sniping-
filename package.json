@@ -1,0 +1,20 @@
+{
+  "name": "discord-message-logger",
+  "version": "1.0.0",
+  "description": "Logs all Discord messages (create/edit/delete) to SQLite and exposes a simple REST API to query them.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}

@@ -6,7 +6,7 @@ const app = express();
 
 // Simple auth: require header "x-api-key: <API_KEY>" on every request
 app.use((req, res, next) => {
-  if (req.path === '/health') return next();
+  if (req.path === '/health' || req.path === '/') return next();
   if (!config.apiKey || req.header('x-api-key') !== config.apiKey) {
     return res.status(401).json({ error: 'Unauthorized. Provide a valid x-api-key header.' });
   }
@@ -14,6 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/health', (req, res) => res.json({ ok: true }));
+app.get('/', (req, res) => res.json({ ok: true, service: 'discord-message-logger' }));
 
 // GET /messages?guildId=&channelId=&authorId=&limit=50&offset=0
 app.get('/messages', (req, res) => {
